@@ -59,7 +59,7 @@ for i in range(0,l):
 
 for i in range(l):
   print("u(",i,")", u[:,i])
-  z[i]= u[2,i]
+  z[i]= u[int((punkti-1)/2),i]
 print("z: ", z[:]) 
 axs[2].plot(z[:], 'bo')
 axs[2].plot(z[:], 'b--')
