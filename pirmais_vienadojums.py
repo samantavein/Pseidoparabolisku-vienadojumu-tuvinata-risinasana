@@ -46,5 +46,8 @@ for i in range(n):
   u[4,i] =0
   print("u(",i,")", u[:5,i])
   z[i]= u[2,i]
+print("z: ", z[:])
 axs[2].plot(z[:], 'bo')
 axs[2].plot(z[:], 'b--')
+
+plt.show()

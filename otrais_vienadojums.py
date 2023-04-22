@@ -11,7 +11,7 @@ punkti = int(intervals/h + 1)
 Ʈ=h
 γ=Ʈ/h**2
 σ = 1
-l=50
+l=10
 
 # attēlo grafiku intervālā x[-1;5]
 fx = np.linspace(0, intervals)
@@ -60,7 +60,8 @@ for i in range(0,l):
 for i in range(l):
   print("u(",i,")", u[:,i])
   z[i]= u[2,i]
- 
+print("z: ", z[:]) 
 axs[2].plot(z[:], 'bo')
 axs[2].plot(z[:], 'b--')
 
+plt.show()
