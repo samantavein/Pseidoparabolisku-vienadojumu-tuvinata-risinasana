@@ -196,7 +196,7 @@ Nt2=1000
 # tabula ar vertibam no intervala [0;L] viduspunta
 fig = go.Figure(data=[go.Table(
                       columnwidth = [20,40,60,60,50,50],
-                      header=dict(values=['t','Analītiski iegūtās atrisinājuma vērtības','Nx=40;  Nt=100;                γ=1,6', '∆1','Nx=40;  Nt=1000;     γ=0,16','∆2'],
+                      header=dict(values=['t','Analītiski iegūtā atrisinājuma vērtības','Nx=40;  Nt=100;                γ=1,6', '∆1','Nx=40;  Nt=1000;     γ=0,16','∆2'],
                       font=dict(color='black', size=15),line_color='darkslategray', height=35),
                       cells=dict(values=
                                  [np.round(t[::int(Nt/10)],2), 
@@ -211,12 +211,12 @@ fig.show()
 # tabula ar analitiskajam un tuvinaatajaam vertiibaam, kad t=Nt
 fig = go.Figure(data=[go.Table(
                       columnwidth = [20,40,60,60,50,60],
-                      header=dict(values=['x','Analītiski iegūtās atrisinājuma vērtības','Nx=40;  Nt=100;                γ=1,6', '∆1','Nx=40;  Nt=1000;     γ=0,16','∆2'],
+                      header=dict(values=['x','Analītiski iegūtā atrisinājuma vērtības','Nx=40;  Nt=100;                γ=1,6', '∆1','Nx=40;  Nt=1000;     γ=0,16','∆2'],
                       font=dict(color='black', size=15),line_color='darkslategray', height=35),                      
                       cells=dict(values=
                                  [np.round(x[::int(Nx/10)],2), 
                                   np.round(u_a[::int(Nx/10),Nt2],9), np.round(u1[::int(Nx/10),Nt1],9),np.round(kluda11[::int(Nx/10)],10),
-                                  np.round(u2[::int(Nx/10),Nt2],9),np.round(kluda22[::int(Nx/10)],20)
+                                  np.round(u2[::int(Nx/10),Nt2],12),np.round(kluda22[::int(Nx/10)],12)
                                  ],
                       height=30,line_color='darkslategray',fill_color='white', font=dict(color='black', size=15)
                                   ))

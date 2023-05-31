@@ -116,6 +116,9 @@ axs[0,0].set_xticklabels(np.linspace(0, T, 11))
 axs[0,0].set_xlabel("t", fontsize='15', loc='right')
 axs[0,0].set_ylabel("u(x,t)", fontsize='15', rotation=0, loc='top')
 
+axs[0,0].set_xlim((9.99,10.001))
+axs[0,0].set_ylim((0.9125,0.9135))
+
 axs[1,0].set_xticks(np.linspace(0, Nx, 5)) 
 axs[1,0].set_xticklabels(np.linspace(0, L, 5))  
 axs[1,0].set_xlabel("x", fontsize='15', loc='right')
@@ -221,6 +224,9 @@ axs[0,1].set_xticklabels(np.linspace(0, T, 11))
 axs[0,1].set_xlabel("t", fontsize='15', loc='right')
 axs[0,1].set_ylabel("u(x,t)", fontsize='15', rotation=0, loc='top')
 
+axs[0,1].set_xlim((99.9,100.01))
+axs[0,1].set_ylim((0.9125,0.9135))
+
 axs[1,1].set_xticks(np.linspace(0, Nx, 5)) 
 axs[1,1].set_xticklabels(np.linspace(0, L, 5))  
 axs[1,1].set_xlabel("x", fontsize='15', loc='right')
@@ -325,6 +331,9 @@ axs[0,2].set_xticklabels(np.linspace(0, T, 11))
 axs[0,2].set_xlabel("t", fontsize='15', loc='right')
 axs[0,2].set_ylabel("u(x,t)", fontsize='15', rotation=0, loc='top')
 
+axs[0,2].set_xlim((999,1000.1))
+axs[0,2].set_ylim((0.9125,0.9135))
+
 axs[1,2].set_xticks(np.linspace(0, Nx, 5)) 
 axs[1,2].set_xticklabels(np.linspace(0, L, 5))  
 axs[1,2].set_xlabel("x", fontsize='15', loc='right')
@@ -348,7 +357,7 @@ Nt3=1000
 # tabula ar analitiskajam un tuvinaatajaam vertiibaam, kad t=Nt
 fig = go.Figure(data=[go.Table(
                       columnwidth = [50,100],
-                      header=dict(values=['x', 'Analītiski iegūtās atrisinājuma vērtības','Nt=10;   γ=16','∆', 'Nt=100;  γ=1,6', '∆','Nt=1000; γ=0,16', '∆'],
+                      header=dict(values=['x', 'Analītiski iegūtā atrisinājuma vērtības','Nt=10;   γ=16','∆', 'Nt=100;  γ=1,6', '∆','Nt=1000; γ=0,16', '∆'],
                       font=dict(color='black', size=15),line_color='darkslategray',height=35),
                       cells=dict(values=[np.round(x[::int(Nx/10)],2), np.round(u_a[::int(Nx/10),Nt3],11),np.round(u1[::int(Nx/10),Nt1],11),  
                                     np.round(kluda12[::int(Nx/10)],11),  np.round(u2[::int(Nx/10),Nt2],11),
@@ -362,7 +371,7 @@ fig.show()
 # tabula ar vertibam no intervala [0;L] viduspunta
 fig = go.Figure(data=[go.Table(
                       columnwidth = [50,100],
-                      header=dict(values=['t', 'Analītiski iegūtās atrisinājuma vērtības','Nt=10;   γ=16', '∆', 'Nt=100;  γ=1,6', '∆','Nt=1000;  γ=0,16', '∆'],
+                      header=dict(values=['t', 'Analītiski iegūtā atrisinājuma vērtības','Nt=10;   γ=16', '∆', 'Nt=100;  γ=1,6', '∆','Nt=1000;  γ=0,16', '∆'],
                       font=dict(color='black', size=15),line_color='darkslategray',height=35),
                       cells=dict(values=[np.round(t[::int(Nt3/10)],2), np.round(videja_vertiba_a[::int(Nt3/10)],11),
                                          np.round(videja_vertiba1[::int(Nt1/10)],11),  np.round(kluda1[::int(Nt1/10)],11),  

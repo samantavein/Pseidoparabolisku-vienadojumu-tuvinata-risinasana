@@ -7,11 +7,11 @@ fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(15, 5))
 # intervals [0;L]
 L = 1
 # intervals [0;T]
-T = 0.5
+T = 0.1
 # intervala [0;L] sadalijuma soļu skaits
-Nx= 20
+Nx= 40
 # intervala [0;T] sadalijuma soļu skaits
-Nt= 10
+Nt= 100
 
 # intervala [0;L] soļa garums
 h = L / Nx

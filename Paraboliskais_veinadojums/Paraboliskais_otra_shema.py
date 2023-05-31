@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import math
 fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(15, 5))
 
 #--------------------------------------------------------------------------------------
@@ -8,11 +7,12 @@ fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(15, 5))
 # intervals [0;L]
 L = 1
 # intervals [0;T]
-T = 1
+T = 0.1
 # intervala [0;L] sadalijuma soļu skaits
-Nx= 10
+Nx= 40
 # intervala [0;T] sadalijuma soļu skaits
 Nt= 100
+
 # intervala [0;L] soļa garums
 h = L / Nx
 # intervala [0;T] soļa garums
@@ -20,20 +20,15 @@ h = L / Nx
 # apreekina mainiigo gamma
 γ = Ʈ / (h**2)
 print("γ=",γ)
-# mainigais sigma
-σ = 0.5
-# mainigais eta
-η = 1
 print("-----------------------------------------------------------------------------")
 
 # x vērtības intervalaa [0;L]
-x = np.arange(0, L + h, h)
+x = np.arange(0, L + h, L/Nx)
 # t vērtības intervalaa [0;T]
-t = np.arange(0, T + Ʈ, Ʈ)
+t = np.arange(0, T + Ʈ, T/Nt)
 print("x:", x)
 print("t:", t)
 print("-----------------------------------------------------------------------------")
-
 #-------------------------------------------------------------------------------------
 #IZVEIDO NULLU MATRICAS
 # u matricaa tiks saglabatas apreekinaataas tuvinaatas vertiibas
@@ -49,19 +44,19 @@ u[:,0] = np.sin(np.pi*x)
 # robeznosacijumi
 u[0,0] = 0
 u[Nx,0] = 0
-#-------------------------------------------------------------------------------------
-# TUVINATO VERTIBU APREKINASANA
+#------------------------------------------------------------------------------------- 
+#TUVINATO VERTIBU APREKINASANA
 for j in range (0,Nt):
   # reekina alpha un beta
   for i in range(1,Nx):   
-    A= (γ*σ + η*(γ/Ʈ))
-    B= (γ*σ + η*(γ/Ʈ))
-    C= (1 + 2*γ*σ + 2*η*(γ/Ʈ))
-    F =(((1-σ)*γ - η*(γ/Ʈ)) * u[i-1,j] + (1 - 2*(1-σ)*γ + 2*η*(γ/Ʈ)) * u[i,j] + ((1-σ)*γ - η*(γ/Ʈ)) * u[i+1,j])
-    
+    A = (γ)
+    B = (γ)
+    C = (2*γ + 1)
+    F = u[i,j]
+
     alpha[i+1,j] = B/(C-A*alpha[i,j])
     beta[i+1,j] = (A*beta[i,j]+F)/(C-A*alpha[i,j])
-
+   
   #reekina tuvinaataas veertiibas
   for i in range(Nx-1,0,-1):
     u[i,j+1] = alpha[i+1,j]*u[i+1,j+1]+beta[i+1,j]
@@ -76,7 +71,6 @@ for i in range(0, Nt+1, int(Nt/10)):
   print("u(", i,"):", u[:,i])
   print("-----------------------------------------------------------------------------")
 
-#-------------------------------------------------------------------------------------
 # KONSTRUEE GRAFIKUS
 # kostrue liknes ar apreekinaatajaam tuvinaatajaam vertiibaam
 for i in range(1,Nt+1, int(Nt/10)):
@@ -113,8 +107,8 @@ fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.plot_surface(X, T, u.T, cmap='viridis')
 
-ax.set_xlabel('x')
-ax.set_ylabel('t')
-ax.set_zlabel('u(x, t)')
+ax.set_xlabel('x', fontsize='15')
+ax.set_ylabel('t', fontsize='15')
+ax.set_zlabel('u(x, t)', fontsize='15')
 
 plt.show()

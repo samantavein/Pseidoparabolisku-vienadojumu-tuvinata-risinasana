@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import math
-fig, axs = plt.subplots(nrows=1, ncols=3, figsize=(25, 5))
-axs[0].axhline(y=0, color='k', linestyle='-', linewidth='0.5')
+plt.axhline(y=0, color='k', linestyle='-', linewidth='0.5')
 #--------------------------------------------------------------------------------------
 #MAINIIGIE
 # intervals [0;L]
@@ -21,7 +19,7 @@ h = L / Nx
 γ = Ʈ / (h**2)
 print("γ=",γ)
 # mainigais sigma
-σ = 0.1
+σ = 0
 # mainigais eta
 η = 1
 
@@ -80,18 +78,17 @@ print("u(1)", u[::int(Nx/10),1])
 
 # konstrue tuvinaato veertiibu liknes
 for i in range(1,Nt+1,int(Nt/10) ):
-  axs[0].plot(u[:,i], 'bo')
-  axs[0].plot(u[:,i], 'b--', linewidth='2')
+  plt.plot(u[:,i], 'bo')
+  plt.plot(u[:,i], 'b--', linewidth='2')
 
 # konstrue sakuma nosacijuma likni
-axs[0].plot(u[:,0], 'ro')
-axs[0].plot(u[:,0], 'r--', linewidth='2')
+plt.plot(u[:,0], 'ro')
+plt.plot(u[:,0], 'r--', linewidth='2')
 
 # sadala un pieskir x asiim veertiibas un iedod x un y asiim nosaukumus
-axs[0].set_xticks(np.linspace(0, Nx, 5)) 
-axs[0].set_xticklabels(np.linspace(0, L, 5))  
-axs[0].set_xlabel("x", fontsize='15', loc='right')
-axs[0].set_ylabel("u(x,t)", fontsize='15', rotation=0, loc='top')
+plt.xticks(np.linspace(0, Nx, 5), np.linspace(0, L, 5))
+plt.xlabel("x", fontsize='15', loc='right')
+plt.ylabel("u(x,t)", fontsize='15', rotation=0, loc='top')
 
 
 # izveido un uzkonstruee virsmas grafiku

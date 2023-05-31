@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import math
 fig, axs = plt.subplots(nrows=1, ncols=3, figsize=(25, 5))
 axs[0].axhline(y=0, color='k', linestyle='-', linewidth='0.5')
 #--------------------------------------------------------------------------------------
@@ -21,7 +20,7 @@ h = L / Nx
 γ = Ʈ / (h**2)
 print("γ=",γ)
 # mainigais sigma
-σ = 0.1
+σ = 0
 # mainigais eta
 η = 1
 
@@ -115,11 +114,6 @@ for i in range(0,Nt+1):
 #-------------------------------------------------------------------------------------
 # KONSTRUEE GRAFIKUS
 
-# konstrue tuvinaato veertiibu liiknes kad t=T
-#axs[0].plot(u_a[:,Nt], 'r-', linewidth='4')
-#axs[0].plot(u[:,Nt], 'b--', linewidth='4')
-
-
 # konstrue sakuma nosacijuma likni
 axs[0].plot(u[:,0], 'k-', linewidth='4')
 
@@ -177,7 +171,7 @@ import plotly.graph_objects as go
 # tabula ar tuvinatajam vertibam fiksetos punktos x=0,2 un x=0,8
 fig = go.Figure(data=[go.Table(
                       columnwidth = [50,100],
-                      header=dict(values=['t','Analītiski iegūtās atrisinājuma vērtības', 'u(0.2,t)', '∆','Analītiski iegūtās atrisinājuma vērtības', 'u(0.8,t)', '∆'  ],
+                      header=dict(values=['t','Analītiski iegūtā atrisinājuma vērtības', 'u(0.2,t)', '∆','Analītiski iegūtā atrisinājuma vērtības', 'u(0.8,t)', '∆'  ],
                       font=dict(color='black', size=15),line_color='darkslategray'),
                       cells=dict(values=[np.round(t[::int(Nt/10)],2), 
                                     np.round(videja_vertiba_a[::int(Nt/10)],12),  np.round(videja_vertiba[::int(Nt/10)],9), np.round(kluda2[::int(Nt/10),0],12),
@@ -190,7 +184,7 @@ fig.show()
 # tabula ar tuvinatam vertibam, kad t[1] (t=T/Nt)
 fig = go.Figure(data=[go.Table(
                       columnwidth = [50,100],
-                      header=dict(values=['x','Analītiski iegūtās atrisinājuma vērtības', 'u(x,1)', '∆' ],
+                      header=dict(values=['x','Analītiski iegūtā atrisinājuma vērtības', 'u(x,1)', '∆' ],
                       font=dict(color='black', size=15),line_color='darkslategray',height=35),
                       cells=dict(values=[np.round(x[::int(Nx/10)],2), np.round(u_a[::int(Nx/10),Nt],12),  
                                    np.round(u[::int(Nx/10),Nt],12), np.round(kluda1[::int(Nx/10)],12)],

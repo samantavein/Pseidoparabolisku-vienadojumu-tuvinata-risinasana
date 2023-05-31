@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import math
-fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(15, 5))
 
 #--------------------------------------------------------------------------------------
 #MAINIIGIE
@@ -66,7 +64,6 @@ u[:,0] = np.sin(np.pi*x)
 u[0,0] = 0
 u[Nx,0] = 0
 
-
 #-------------------------------------------------------------------------------------
 #TUVINATO VERTIBU APREKINASANA
 for n in range(N_eta + 1):
@@ -107,30 +104,29 @@ for n in range(N_eta + 1):
 
 #KONSTRUE GRAFIKUS
 # analitiska un tuvinata likne, kad eta = 0
-axs[0].plot(u2_a[:,0], 'r-',linewidth = '5')
+plt.plot(u2_a[:,0], 'r-',linewidth = '5')
 #axs[0].plot(u2[:,0], 'bo')
-axs[0].plot(u2[:,0], 'b--',linewidth = '3')
+plt.plot(u2[:,0], 'b--',linewidth = '3')
 
 # analitiskas un tuvinatas liknes, kad 0 < eta < 1
 for i in range (1,N_eta):
-  axs[0].plot(u2_a[:,i], 'r-',linewidth = '5')
+  plt.plot(u2_a[:,i], 'r-',linewidth = '5')
   #axs[0].plot(u2[:,i], 'ko')
-  axs[0].plot(u2[:,i], 'y--',linewidth = '3')
+  plt.plot(u2[:,i], 'y--',linewidth = '3')
 
 # analitiska un tuvinata likne, kad sigma = 1
-axs[0].plot(u2_a[:,N_eta], 'r-',linewidth = '5')
+plt.plot(u2_a[:,N_eta], 'r-',linewidth = '5')
 #axs[0].plot(u2[:,N_eta], 'go')
-axs[0].plot(u2[:,N_eta], 'g--',linewidth = '3')
+plt.plot(u2[:,N_eta], 'g--',linewidth = '3')
 
 
 #-----------------------------------------------------------------------------------------------------------
-axs[0].set_xticks(np.linspace(0, Nx, 5)) 
-axs[0].set_xticklabels(np.linspace(0, L, 5))  
-axs[0].set_xlabel("x", fontsize='20', loc='right')
-axs[0].set_ylabel("u(x,t)", fontsize='20', rotation=0, loc='top')
+plt.xticks(np.linspace(0, Nx, 5), np.linspace(0, L, 5))
+plt.xlabel("x", fontsize='20', loc='right')
+plt.ylabel("u(x,t)", fontsize='20', rotation=0, loc='top')
 
-axs[0].tick_params(axis='x', labelsize=15)
-axs[0].tick_params(axis='y', labelsize=15)
+plt.tick_params(axis='x', labelsize=13)
+plt.tick_params(axis='y', labelsize=13)
 
 plt.show()
 
@@ -139,7 +135,7 @@ import plotly.graph_objects as go
 
 fig = go.Figure(data=[go.Table(
                       columnwidth = [50,100],
-                      header=dict(values=['x', 'Analītiski iegūtās atrisinājuma vērtības', 'η = 0.0','∆1', 'Analītiski iegūtās atrisinājuma vērtības', 'η = 0.5','∆2', 'Analītiski iegūtās atrisinājuma vērtības', 'η = 1.0', '∆3'],
+                      header=dict(values=['x', 'Analītiski iegūtā atrisinājuma vērtības', 'η = 0.0','∆1', 'Analītiski iegūtā atrisinājuma vērtības', 'η = 0.5','∆2', 'Analītiski iegūtā atrisinājuma vērtības', 'η = 1.0', '∆3'],
                       font=dict(color='black', size=15),line_color='darkslategray',height=35),
                       cells=dict(values=[np.round(x[::int(Nx/10)],2), 
                                          np.round(u2_a[::int(Nx/10),0],10), np.round(u2[::int(Nx/10),0],10), np.round(kluda[::int(Nx/10),0],10), 
